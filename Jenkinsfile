@@ -33,9 +33,11 @@ pipeline {
         stage('SonarCloud Analysis') {
             steps {
                 // we need to download a zip and extract it.
-                curl -L -o sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-8.0.1.6346-windows-x64.zip
-                unzip zipFile: 'solar-scanner.zip'
-                bat 'bin/sonar-scanner.bat'
+                bat '''
+                    curl -L -o sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-8.0.1.6346-windows-x64.zip
+                    unzip zipFile: 'solar-scanner.zip'
+                    bat 'bin/sonar-scanner.bat'
+                '''
         }
     }
 }
